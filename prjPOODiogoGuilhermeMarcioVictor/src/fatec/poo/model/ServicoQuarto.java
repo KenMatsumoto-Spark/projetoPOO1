@@ -7,8 +7,17 @@ package fatec.poo.model;
 
 /**
  *
- * @author h264m
+ * @author DiogoGuilhermeMarcioVictor
  */
 public class ServicoQuarto {
+    private int codigo;
+    private String descricao;
+    private double valor;
+
+    public ServicoQuarto(int codigo, String descricao) {
+        this.codigo = codigo;
+        this.descricao = descricao;
+    }
+    
     
 }

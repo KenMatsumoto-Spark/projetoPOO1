@@ -7,7 +7,7 @@ package fatec.poo.model;
 
 /**
  *
- * @author h264m
+ * @author DiogoGuilhermeMarcioVictor
  */
 public class Hospede extends Pessoa{
     private String cpf;

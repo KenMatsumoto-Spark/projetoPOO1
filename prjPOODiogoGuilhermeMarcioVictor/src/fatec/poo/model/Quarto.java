@@ -7,8 +7,19 @@ package fatec.poo.model;
 
 /**
  *
- * @author h264m
+ * @author DiogoGuilhermeMarcioVictor
  */
 public class Quarto {
+    private int numero;
+    private String tipo;
+    private boolean situacao;
+    private double valorDiario;
+    private double totalFaturado;
+
+    public Quarto(int numero, String tipo, double valorDiario) {
+        this.numero = numero;
+        this.tipo = tipo;
+        this.valorDiario = valorDiario;
+    }
     
 }

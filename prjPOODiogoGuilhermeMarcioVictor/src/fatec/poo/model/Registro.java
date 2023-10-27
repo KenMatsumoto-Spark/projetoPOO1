@@ -5,10 +5,23 @@
  */
 package fatec.poo.model;
 
+import java.time.LocalDate;
+
 /**
  *
- * @author h264m
+ * @author DiogoGuilhermeMarcioVictor
  */
 public class Registro {
+    private int codigo;
+    private LocalDate dataEntrada;
+    private LocalDate dataSaida;
+    private double valorHospedagem;
+
+    public Registro(int codigo, LocalDate dataEntrada, double valorHospedagem) {
+        this.codigo = codigo;
+        this.dataEntrada = dataEntrada;
+        this.valorHospedagem = valorHospedagem;
+    }
+    
     
 }

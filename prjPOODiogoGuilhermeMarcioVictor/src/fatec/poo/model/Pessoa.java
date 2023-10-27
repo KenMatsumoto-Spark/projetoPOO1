@@ -7,7 +7,7 @@ package fatec.poo.model;
 
 /**
  *
- * @author h264m
+ * @author DiogoGuilhermeMarcioVictor
  */
 public abstract class Pessoa {
     private String nome;
