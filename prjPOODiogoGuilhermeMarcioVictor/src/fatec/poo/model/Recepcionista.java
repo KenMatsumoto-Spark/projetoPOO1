@@ -19,7 +19,13 @@ public class Recepcionista extends Pessoa {
     }
 
     public void setTurno(String turno) {
-        this.turno = turno;
+        if (turno == "M") {
+            this.turno = "Manhã";
+        } else if (turno == "T") {
+            this.turno = "Tarde";
+        } else {
+            this.turno = "Noite";
+        }
     }
 
     public int getRegFunc() {

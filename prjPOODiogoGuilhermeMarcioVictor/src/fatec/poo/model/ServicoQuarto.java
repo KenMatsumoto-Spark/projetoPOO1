@@ -19,5 +19,20 @@ public class ServicoQuarto {
         this.descricao = descricao;
     }
     
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public String getDescicao() {
+        return descricao;
+    }
+
+    public double getValor() {
+        return valor;
+    }
     
 }

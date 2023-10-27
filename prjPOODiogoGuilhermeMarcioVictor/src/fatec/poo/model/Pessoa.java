@@ -5,6 +5,8 @@
  */
 package fatec.poo.model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author DiogoGuilhermeMarcioVictor
@@ -13,7 +15,7 @@ public abstract class Pessoa {
     private String nome;
     private String endereco;
     private String telefone;
-
+    
     public Pessoa(String nome) {
         this.nome = nome;
     }
