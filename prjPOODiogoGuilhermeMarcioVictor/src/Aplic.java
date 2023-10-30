@@ -130,6 +130,7 @@ public class Aplic {
             System.out.println(serv.getDescricao());
         });
         System.out.println("");
+
     }
     
 }

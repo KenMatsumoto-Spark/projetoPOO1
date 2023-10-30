@@ -30,7 +30,7 @@ public class Quarto {
     public double liberar(int dias) {
         this.situacao = false;
         this.totalFaturado = dias * this.valorDiaria;
-        return this.totalFaturado;
+        return (dias * this.valorDiaria);
     }
     
     public void addRegistro(Registro reg){
