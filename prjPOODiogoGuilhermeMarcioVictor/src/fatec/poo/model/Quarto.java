@@ -15,16 +15,12 @@ public class Quarto {
     private boolean situacao;
     private double valorDiaria;
     private double totalFaturado;
-
+    private Registro registro;
+    
     public Quarto(int numero, String tipo, double valorDiaria) {
         this.numero = numero;
         this.valorDiaria = valorDiaria;
-        
-        if (tipo == "S") {
-            this.tipo = "Solteiro";
-        } else {
-            this.tipo = "Casado";
-        }
+        this.tipo = tipo;
     }
     
     public void reservar() {
@@ -35,6 +31,35 @@ public class Quarto {
         this.situacao = false;
         this.totalFaturado = dias * this.valorDiaria;
         return this.totalFaturado;
+    }
+    
+    public void addRegistro(Registro reg){
+        this.registro = reg;
+        reg.setQuarto(this);
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public boolean isSituacao() {
+        return situacao;
+    }
+
+    public double getValorDiaria() {
+        return valorDiaria;
+    }
+
+    public double getTotalFaturado() {
+        return totalFaturado;
+    }
+
+    public Registro getRegistro() {
+        return registro;
     }
     
 }

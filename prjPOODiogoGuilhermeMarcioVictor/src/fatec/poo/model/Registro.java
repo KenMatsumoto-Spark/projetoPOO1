@@ -18,6 +18,7 @@ public class Registro {
     private LocalDate dataEntrada;
     private LocalDate dataSaida;
     private double valorHospedagem;
+    
     private Hospede hospede;
     private Quarto quarto;
     private Recepcionista recepcionista; 
@@ -26,36 +27,64 @@ public class Registro {
     public Registro(int codigo, LocalDate dataEntrada, Recepcionista recepcionista) {
         this.codigo = codigo;
         this.dataEntrada = dataEntrada;
-        this.recepcionista = recepcionista;
         
+        recepcionista.addRegistro(this);
         this.servicos = new ArrayList<ServicoQuarto>();
+    }
+    
+    public void setDataSaida(LocalDate dataSaida) {
+        this.dataSaida = dataSaida;
+    }
+    
+    public int getCodigo() {
+        return codigo;
+    }
+    
+    public LocalDate getDataEntrada() {
+        return dataEntrada;
+    }
+    
+    public LocalDate getDataSaida() {
+        return dataSaida;
+    }
+    
+    public double getValorHospedagem() {
+        return valorHospedagem;
+    }
+    
+    public void reservarQuarto(Hospede hospede, Quarto quarto) {
+        this.hospede = hospede;
+        hospede.addRegistro(this);
+        quarto.addRegistro(this);
+        quarto.reservar();
+    }
+    
+    public double liberarQuarto() {
+        long diferencaEmDias = ChronoUnit.DAYS.between(dataEntrada, dataSaida);
+        int dias = (int) diferencaEmDias;
+        double valor = quarto.liberar(dias);
+        valorHospedagem = valor - (valor * (hospede.getTaxaDesconto()/100));
+        for (ServicoQuarto servico : servicos) {
+            valorHospedagem += servico.getValor();
+        }
+        return valorHospedagem;
     }
     
     public void setHospede(Hospede hos){
         this.hospede = hos;
     }
     
-    public LocalDate getDataSaida() {
-        return dataSaida;
+    public void setRecepcionista(Recepcionista rec){
+        this.recepcionista = rec;
     }
-
-    public int getCodigo() {
-        return codigo;
+        
+    public void setQuarto(Quarto qua){
+        this.quarto = qua;
     }
-    public void setDataSaida(LocalDate dataSaida) {
-        this.dataSaida = dataSaida;
-    }
-
-    public double getValorHospedagem() {
-        return valorHospedagem;
-    }
-
-    public LocalDate getDataEntrada() {
-        return dataEntrada;
-    }
-
-    public Recepcionista getRecepcionista() {
-        return recepcionista;
+    
+    public void addServico(ServicoQuarto serv){
+        this.servicos.add(serv);
+        serv.setRegistro(this);
     }
 
     public Hospede getHospede() {
@@ -65,24 +94,13 @@ public class Registro {
     public Quarto getQuarto() {
         return quarto;
     }
-    
-    public void reservarQuarto(Hospede hospede, Quarto quarto) {
-        this.hospede = hospede;
-        hospede.addRegistro(this);
-        
-        this.quarto = quarto;
-        this.quarto.reservar();
-    }
-    
-    public double liberarQuarto() {
-        long diferencaEmDias = ChronoUnit.DAYS.between(dataSaida, dataEntrada);
-        int dias = (int) diferencaEmDias;
-        double valor = quarto.liberar(dias);
-        valorHospedagem = valor + (valor * hospede.getTaxaDesconto());
-        for (ServicoQuarto servico : servicos) {
-            valorHospedagem += servico.getValor();
-        }
-        return valorHospedagem;
 
+    public Recepcionista getRecepcionista() {
+        return recepcionista;
     }
+
+    public ArrayList<ServicoQuarto> getServicos() {
+        return servicos;
+    }
+   
 }

@@ -14,13 +14,13 @@ import java.util.ArrayList;
 public class Hospede extends Pessoa{
     private String cpf;
     private double taxaDesconto;
+    
     private ArrayList<Registro> registros;
     
-    public Hospede(String nome, String cpf) {
+    public Hospede(String cpf, String nome) {
         super(nome);
         
         this.cpf = cpf;
-        
         registros = new ArrayList<Registro>();
     }
 
@@ -38,5 +38,10 @@ public class Hospede extends Pessoa{
     
     public void addRegistro(Registro reg){
         registros.add(reg);
+        reg.setHospede(this);
+    }
+    
+    public ArrayList<Registro> getRegistros(){
+        return this.registros;
     }
 }

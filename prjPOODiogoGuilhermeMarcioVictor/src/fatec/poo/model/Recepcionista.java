@@ -5,6 +5,8 @@
  */
 package fatec.poo.model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author DiogoGuilhermeMarcioVictor
@@ -12,20 +14,17 @@ package fatec.poo.model;
 public class Recepcionista extends Pessoa {
     private int regFunc;
     private String turno;
-
+    private ArrayList<Registro> registros;
+    
     public Recepcionista(int regFunc, String nome) {
         super(nome);
         this.regFunc = regFunc;
+        
+        registros = new ArrayList<Registro>();
     }
 
     public void setTurno(String turno) {
-        if (turno == "M") {
-            this.turno = "Manhã";
-        } else if (turno == "T") {
-            this.turno = "Tarde";
-        } else {
-            this.turno = "Noite";
-        }
+        this.turno = turno;
     }
 
     public int getRegFunc() {
@@ -36,5 +35,12 @@ public class Recepcionista extends Pessoa {
         return turno;
     }
     
-    
+    public void addRegistro(Registro reg){
+        registros.add(reg);
+        reg.setRecepcionista(this);
+    }
+
+    public ArrayList<Registro> getRegistros() {
+        return registros;
+    }
 }
